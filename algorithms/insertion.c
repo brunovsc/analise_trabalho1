@@ -50,7 +50,20 @@ int verify_sorted(int *array, int N){
 	return 1;
 }
 
-// sort_algorithm_definition()
+void insertion_sort(int *array, int N){
+	int i, j;
+	int key;
+	int aux;
+	for(j = 1; j < N; j++){
+		key = array[j];
+		i =  j - 1;
+		while(i >= 0 && array[i] > key){
+			array[i+1] = array[i];
+			i = i-1;
+		}
+		array[i+1] = key;
+	}
+}
 
 int main(int argc, char * argv[]){
 	// analyzing input arguments
@@ -90,7 +103,7 @@ int main(int argc, char * argv[]){
 	// begin time counting
     clock_t begin = clock();
 
-    // sort_algorithm_call();
+    insertion_sort(array, N);
 
 	// end time counting
     clock_t end = clock();
