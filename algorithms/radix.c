@@ -135,8 +135,6 @@ int main(int argc, char * argv[]){
   // loading input file
   load_file(inputFilename, array, N);
   int K = bigger(array, N);
-  int n = sizeof(array)/sizeof(array[0]);
-  printf("\nN:%d-n:%d\n",N,n);
   // begin time counting
   
   clock_t begin = clock();
