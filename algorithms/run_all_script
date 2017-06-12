@@ -1,0 +1,34 @@
+#!/bin/bash
+
+iterations=3
+maxK=14
+maxInput=4
+totalPrograms=7
+programs=("insertion" "merge" "heap" "quick" "counting" "radix" "bucket")
+logFile="log_runs.txt"
+
+i=0
+k=1
+input=1
+program=1
+programName="sort"
+
+while [ $program -lt $((totalPrograms+1)) ]; do
+	programName=${programs[$((program-1))]}
+	# echo $programName >> logFile
+	while [ $k -lt $((maxK+1)) ]; do
+		while [ $input -lt $((maxInput+1)) ]; do
+			while [ $i -lt $iterations ]; do
+				echo $programName $k $input >> logFile
+				./$programName $k $input
+				((i++))
+			done
+			i=0
+			((input++))
+		done
+		input=1
+		((k++))
+	done
+	k=1
+	((program++))
+done
